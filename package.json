@@ -8,7 +8,7 @@
         "color": "#111111",
         "theme": "dark"
     },
-    "icon": "res/icon.png",
+    "icon": "./res/icon.png",
     "license": "For licensing see LICENSE",
     "author": {
         "email": "kenomaru@hotmail.it",
@@ -87,6 +87,10 @@
                 }
             }
         }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xenoken/Thunder.git"
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

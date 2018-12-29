@@ -5,3 +5,4 @@ node_modules
 secure
 *.secure.txt
 tools
+src/telemetry.ts

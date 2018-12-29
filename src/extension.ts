@@ -3,18 +3,7 @@
 // import * as vscode from 'vscode';
 import { workspace, window, ExtensionContext, Range, TextEditorSelectionChangeKind } from 'vscode';
 
-
-//const vscode = require('vscode');
-const TelemetryReporter = require('vscode-extension-telemetry');
-
-// all events will be prefixed with this event name
-const extensionId = 'Thunder'; //'<your extension unique name>';
-
-// extension version will be reported as a property with each event 
-const extensionVersion = '0.1.0'; //'<your extension version>'; 
-
-// the application insights key (also known as instrumentation key)
-const key = CreaChiave();
+import {TelemetryReporter, extensionId, extensionVersion,key} from './telemetry';
 
 // telemetry reporter 
 let reporter: any;
@@ -25,9 +14,7 @@ var ThunderMappings: Array<Array<string>> = [];
 const SETTING_THUNDER_MAPPINGS = "thunder.mappings";
 const SETTING_THUDER_MAXINTERVAL = "thunder.maxInterval";
 
-function CreaChiave() : string{
-    return '8378d290-7a43-4741-b935-23d2fdafb4b7';
-}
+
 
 function GatherSettingMappings() {
     console.log("Thunder: Reading 'Mappings'.");

@@ -1,12 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 // import * as vscode from 'vscode';
+
 import { workspace, window, ExtensionContext, Range, TextEditorSelectionChangeKind } from 'vscode';
-
-import {TelemetryReporter, extensionId, extensionVersion,key} from './telemetry';
-
-// telemetry reporter 
-let reporter: any;
 
 
 var ThunderMaxIntervalMS: number = 200;
@@ -52,32 +48,20 @@ export function activate(context: ExtensionContext) {
 
     console.log("Thunder: Extension Activated.");
 
-    // create telemetry reporter on extension activation
-    reporter = new TelemetryReporter(extensionId, extensionVersion, key);
-    // ensure it gets property disposed
-    context.subscriptions.push(reporter);
-
-
-    // send event any time after activation
-    // reporter.sendTelemetryEvent('sampleEvent', { 'stringProp': 'some string' }, { 'numericMeasure': 123});
-    reporter.sendTelemetryEvent('thunder.activation', {});
-
 
     var last_text: String | undefined;
     var last_timestampMS: number | undefined = undefined;
 
     GatherSettings();
 
-    var removanda2 = workspace.onDidChangeConfiguration(e => {
+    var subOnDidChangeConfiguration = workspace.onDidChangeConfiguration(e => {
         // the configuration was changed.
         //console.log("Thunder: Configuration was changed.");
         // on configuration changed.
         if (e.affectsConfiguration(SETTING_THUDER_MAXINTERVAL)) {
-            reporter.sendTelemetryEvent('thunder.settingchanged.maxinterval', {});
             GatherSettingMaxIntervals();
         }
         else if (e.affectsConfiguration(SETTING_THUNDER_MAPPINGS)) {
-            reporter.sendTelemetryEvent('thunder.settingchanged.mappings', {});
             GatherSettingMappings();
         }
     });
@@ -97,7 +81,7 @@ export function activate(context: ExtensionContext) {
         return null;
     }
 
-    var removanda = window.onDidChangeTextEditorSelection(function (event) {
+    var subOnDidChangeTextEditorSelection = window.onDidChangeTextEditorSelection(function (event) {
         if (event.kind == TextEditorSelectionChangeKind.Keyboard) {
 
             //let _trackedCharPressedNow = false;
@@ -116,6 +100,7 @@ export function activate(context: ExtensionContext) {
 
 
             // did the user pressed a tracked character?
+            // P.S the isTracked function returns the replacer if text is a tracked string..
             let _tracked = isTracked(text);
 
             if (_tracked != null) {
@@ -167,18 +152,13 @@ export function activate(context: ExtensionContext) {
 
 
 
-    context.subscriptions.push(removanda2);
+    context.subscriptions.push(subOnDidChangeConfiguration);
     // context.subscriptions.push(disposable);
-    context.subscriptions.push(removanda);
+    context.subscriptions.push(subOnDidChangeTextEditorSelection);
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {
-    reporter.sendTelemetryEvent('thunder.deactivation', {});
-    // This will ensure all pending events get flushed
-    reporter.dispose();
+  
 }
-
-// TELEMETRY
-
 

@@ -29,11 +29,16 @@
             "type": "object",
             "title": "Thunder Settings",
             "properties": {
+                "thunder.debugmode" : {
+                    "type" : "boolean",
+                    "default" : false,
+                    "description": "Enables debug information logging."
+                },
                 "thunder.maxInterval": {
                     "type": "number",
                     "default": 300,
                     "exclusiveMinimum": 0,
-                    "description": "the maximum time to pass between two keypresses to still invoke a thunder Combo."
+                    "description": "The maximum temporal distance between two typings of a tracked character to still trigger a replacement."
                 },
                 "thunder.mappings": {
                     "type": "array",

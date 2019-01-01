@@ -1,7 +1,7 @@
 {
     "name": "thunder",
     "displayName": "Thunder",
-    "description": "Type quickly and freely.",
+    "description": "Type quickly. Type freely.",
     "publisher": "Kenomaru",
     "version": "0.1.0",
     "galleryBanner": {
@@ -29,9 +29,9 @@
             "type": "object",
             "title": "Thunder Settings",
             "properties": {
-                "thunder.debugmode" : {
-                    "type" : "boolean",
-                    "default" : false,
+                "thunder.debugmode": {
+                    "type": "boolean",
+                    "default": false,
                     "description": "Enables debug information logging."
                 },
                 "thunder.maxInterval": {
@@ -110,8 +110,5 @@
         "@types/node": "^8.10.25",
         "@types/mocha": "^2.2.42"
     },
-    "dependencies": {
-        "applicationinsights": "^1.0.8",
-        "vscode-extension-telemetry": "^0.1.0"
-    }
+    "dependencies": {}
 }

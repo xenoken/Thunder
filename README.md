@@ -69,8 +69,9 @@ Thunder replaces any tracked character with the corresponding replacer string.
 
 ## Release Notes
 
+## 0.1.1
+- Some minor fixes.
 
 ### 0.1.0
-
-Initial release of Thunder.
+- Initial release.
 

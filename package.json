@@ -8,7 +8,7 @@
         "color": "#111111",
         "theme": "dark"
     },
-    "icon": "./res/icon.png",
+    "icon": "res/icon.png",
     "license": "For licensing see LICENSE",
     "author": {
         "email": "kenomaru@hotmail.it",
@@ -27,20 +27,23 @@
     "contributes": {
         "configuration": {
             "type": "object",
-            "title": "Thunder Settings",
+            "title": "Thunder",
             "properties": {
                 "thunder.debugmode": {
+                    "title": "Debug Mode",
                     "type": "boolean",
                     "default": false,
                     "description": "Enables debug information logging."
                 },
                 "thunder.maxInterval": {
+                    "title": "Max Interval",
                     "type": "number",
                     "default": 300,
                     "exclusiveMinimum": 0,
                     "description": "The maximum temporal distance between two typings of a tracked character to still trigger a replacement."
                 },
                 "thunder.mappings": {
+                    "title": "Mappings",
                     "type": "array",
                     "default": [
                         [

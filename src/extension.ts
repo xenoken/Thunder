@@ -11,7 +11,7 @@ var ThunderDebugMode: boolean = false;
 
 const SETTING_THUNDER_MAPPINGS = "thunder.mappings";
 const SETTING_THUNDER_MAXINTERVAL = "thunder.maxInterval";
-const SETTING_THUNDER_DEBUGMODE = "thunder.debugmode";
+const SETTING_THUNDER_DEBUGMODE = "thunder.debugMode";
 
 function log(message: string) {
     if (ThunderDebugMode) {

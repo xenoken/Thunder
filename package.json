@@ -29,7 +29,7 @@
             "type": "object",
             "title": "Thunder",
             "properties": {
-                "thunder.debugmode": {
+                "thunder.debugMode": {
                     "title": "Debug Mode",
                     "type": "boolean",
                     "default": false,

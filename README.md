@@ -35,6 +35,8 @@ This extension contributes the following settings:
 
 * `thunder.mappings` : The list of Thunder Mappings. Each Mapping element tells Thunder how to replace tracked characters.
 
+* `thunder.debugMode` : Enables the logging of debug information to the console.
+
 
 
 ## Glossary

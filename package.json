@@ -3,7 +3,7 @@
     "displayName": "Thunder",
     "description": "Type quickly. Type freely.",
     "publisher": "Kenomaru",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "galleryBanner": {
         "color": "#111111",
         "theme": "dark"
@@ -32,65 +32,38 @@
                 "thunder.debugMode": {
                     "title": "Debug Mode",
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Enables debug information logging."
                 },
                 "thunder.maxInterval": {
                     "title": "Max Interval",
                     "type": "number",
-                    "default": 300,
+                    "default": 140,
                     "exclusiveMinimum": 0,
                     "description": "The maximum temporal distance between two typings of a tracked character to still trigger a replacement."
                 },
                 "thunder.mappings": {
                     "title": "Mappings",
-                    "type": "array",
-                    "default": [
-                        [
-                            "1",
-                            "!"
-                        ],
-                        [
-                            "2",
-                            "\""
-                        ],
-                        [
-                            ",",
-                            ";"
-                        ],
-                        [
-                            "<",
-                            ">"
-                        ],
-                        [
-                            ".",
-                            ":"
-                        ],
-                        [
-                            "è",
-                            "{"
-                        ],
-                        [
-                            "+",
-                            "}"
-                        ],
-                        [
-                            "8",
-                            "("
-                        ],
-                        [
-                            "9",
-                            ")"
-                        ],
-                        [
-                            "o",
-                            "["
-                        ],
-                        [
-                            "p",
-                            "]"
-                        ]
-                    ],
+                    "type": "object",
+                    "default": {
+                        "common": {
+                            "1": "!",
+                            "2": "\"",
+                            ",": ";",
+                            "<": ">",
+                            ".": ":",
+                            "è": "{",
+                            "+": "}",
+                            "8": "(",
+                            "9": ")",
+                            "o": "[",
+                            "p": "]"
+                        },
+                        "php" : {
+                            "." : "->"
+                        }
+                       
+                    },
                     "description": ""
                 }
             }

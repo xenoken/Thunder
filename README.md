@@ -26,6 +26,7 @@ To also allow tracked characters to be typed twice in a row without being replac
 
 - Mappings are dynamic! Mappings can be changed at any time. No need to reactivate the extension.
 
+- Language Specific Mappings! Activate different mappings for different languages.
 
 ## Extension Settings
 
@@ -69,9 +70,4 @@ Thunder replaces any tracked character with the corresponding replacer string.
 
 ## Release Notes
 
-## 0.1.1
-- Some minor fixes.
-
-### 0.1.0
-- Initial release.
-
+see CHANGELOG.md

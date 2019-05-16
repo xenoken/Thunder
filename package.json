@@ -3,7 +3,7 @@
     "displayName": "Thunder",
     "description": "Type quickly. Type freely.",
     "publisher": "Kenomaru",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "galleryBanner": {
         "color": "#111111",
         "theme": "dark"
@@ -32,7 +32,7 @@
                 "thunder.debugMode": {
                     "title": "Debug Mode",
                     "type": "boolean",
-                    "default": false,
+                    "default": true,
                     "description": "Enables debug information logging."
                 },
                 "thunder.maxInterval": {
@@ -108,10 +108,10 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.21",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.34"
     },
     "dependencies": {}
 }

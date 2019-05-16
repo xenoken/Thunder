@@ -2,7 +2,6 @@ out
 node_modules
 .vscode-test/
 *.vsix
-secure
-*.secure.txt
-tools
-src/telemetry.ts
+tools/
+dev/
+

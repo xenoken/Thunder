@@ -119,7 +119,7 @@ export function activate(context: ExtensionContext) {
             let _start = event.selections[0].start;
             // an actual text change was made.
             if (_prev_DocVersion < _cur_DocVersion ){ 
-                if ((_start.character > 0 && _start.line == 0) || _start.line > 0){   
+                if (_start.character > 0){   
 
                 // go back to the previous caret position.
                 let backpos = _start.translate(0, -1);

@@ -2,7 +2,7 @@
 
 
 Thunder is an extension for Visual Studio Code that improves your typing experience. With Thunder you will type faster and more naturally.
-![](res\thunder-example-001.gif)
+![](res\example.gif)
 
 
 ## Description
@@ -15,7 +15,7 @@ Thunder works by replacing a **tracked** character with a string called **replac
 Thunder comes with a default Mapping List. For example to type the '"' (double quotes character) it is possible to avoid the SHIFT + 2 key combination and instead pressing twice the '2' character.
 Thunder has default mappings for the common punctuation characters used in computer programming.
 
-![](res\thunder-settings-001.png)
+![](res\settings.png)
 
 ## Notes
 

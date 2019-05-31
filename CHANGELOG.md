@@ -1,4 +1,6 @@
 # Change Log
+## 0.1.5
+- Edited screenshots in README.md 
 
 ## 0.1.4
 - Added screenshots to README.md.

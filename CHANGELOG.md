@@ -1,5 +1,10 @@
 # Change Log
-All notable changes to the "Thunder" extension will be documented in this file.
+
+## 0.1.4
+- Added screenshots to README.md.
+- Added supported languages section.
+- Extended default mappings.
+- Some minor fixes.
 
 ## 0.1.3
 - NEW FEATURE: Language-Specific Mappings.

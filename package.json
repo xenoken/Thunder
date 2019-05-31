@@ -3,7 +3,7 @@
     "displayName": "Thunder",
     "description": "Type quickly. Type freely.",
     "publisher": "Kenomaru",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "galleryBanner": {
         "color": "#111111",
         "theme": "dark"
@@ -57,10 +57,18 @@
                             "8": "(",
                             "9": ")",
                             "o": "[",
-                            "p": "]"
+                            "p": "]",
+                            "7": "/"
+
                         },
                         "php" : {
-                            "." : "->"
+                            "-" :  "->",
+                            "4" :  "$",
+                            "." :  "::",
+                            "6" :   "&"
+                        },
+                        "markdown" : {
+                            "3" : "#"                          
                         }
                        
                     },

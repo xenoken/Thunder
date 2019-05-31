@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 // import * as vscode from 'vscode';
 
-import { TextEditor, window, ExtensionContext, Range, TextEditorSelectionChangeKind } from 'vscode';
+import { TextEditor, window, ExtensionContext, Range, TextEditorSelectionChangeKind, languages } from 'vscode';
 
 import * as settings from './settings';
 import * as logger from "./logger";
@@ -12,7 +12,7 @@ function isTracked(text: string, languageId: string): string | undefined {
 
     let MappingBundle: any = settings.Get(settings.Mappings) as object;
 
-    var trueMappings: any | undefined = undefined;
+    let trueMappings: any | undefined = undefined;
 
     try {
 
@@ -37,11 +37,11 @@ function isTracked(text: string, languageId: string): string | undefined {
         if (trueMappings === undefined)
             return undefined;
 
-        var replacer = trueMappings[text];
+        let replacer = trueMappings[text];
         return replacer;
 
     } catch (error) {
-        logger.SafeLog("Thunder: " + error + "\n. Please check your Thunder settings. Maybe the mappings are not correct?");
+        logger.SafeLog("Thunder: " + error + "\n. Please check your Thunder settings. Maybe the mappings are not set-up correctly?");
     }
     return undefined;
 }
@@ -54,7 +54,29 @@ export function activate(context: ExtensionContext) {
     let _prevT: number | undefined = undefined;
     let _prev_DocVersion: number = -1;
     let _prevString: string | undefined = undefined;
+    
+    async function TryExecuteReplacement(editor: TextEditor, _curChar: string, _curT: number, curCharRange: Range, _replacer: string | undefined): Promise<boolean> {
 
+        let _onTime = (_prevT != null && _prevT != undefined && _curT != undefined &&
+            _curT - _prevT < (settings.Get(settings.MaxInterval) as number));
+
+        if (_onTime) {
+            // determine the string to be replaced.
+            let replacedRange = new Range(curCharRange.start.translate(0, -1), curCharRange.end);
+            let result = await editor.edit(function (builder) {
+                // Replace!
+                builder.replace(replacedRange, _replacer as string);
+                // the replacement was done so now reset.          
+            });
+            logger.SafeLog("Thunder: Replacement executed successfully for the pair: [" + _curChar + " | " + _replacer + "]");
+            return result;
+        }
+        else {
+            logger.SafeLog("Thunder: Replacement Opportunity not taken for excessive delay.");
+            return false;
+        }
+
+    }
 
     let subOnDidChangedTextEditor = window.onDidChangeActiveTextEditor((editor: TextEditor | undefined) => {
 
@@ -79,30 +101,7 @@ export function activate(context: ExtensionContext) {
 
     });
 
-    async function TryExecuteReplacement(editor: TextEditor, _curChar: string, _curT: number, curCharRange: Range, _replacer: string | undefined): Promise<boolean> {
-
-        let _onTime = (_prevT != null && _prevT != undefined && _curT != undefined &&
-            _curT - _prevT < (settings.Get(settings.MaxInterval) as number));
-
-        if (_onTime) {
-            // determine the string to be replaced.
-            let replacedRange = new Range(curCharRange.start.translate(0, -1), curCharRange.end);
-            var result = await editor.edit(function (builder) {
-                // Replace!
-                builder.replace(replacedRange, _replacer as string);
-                // the replacement was done so now reset.          
-            });
-            logger.SafeLog("Thunder: Replacement executed successfully for the pair: [" + _curChar + " | " + _replacer + "]");
-            return result;
-        }
-        else {
-            logger.SafeLog("Thunder: Replacement Opportunity not taken for excessive delay.");
-            return false;
-        }
-
-    }
-
-    var subOnDidChangeTextEditorSelection = window.onDidChangeTextEditorSelection(async function (event) {
+    let subOnDidChangeTextEditorSelection = window.onDidChangeTextEditorSelection(async function (event) {
 
         if (event.kind == TextEditorSelectionChangeKind.Keyboard) {
 
@@ -117,11 +116,13 @@ export function activate(context: ExtensionContext) {
             // get the language of the document
             let _cur_DocLang = event.textEditor.document.languageId;
 
+            let _start = event.selections[0].start;
             // an actual text change was made.
-            if (_prev_DocVersion < _cur_DocVersion) {
+            if (_prev_DocVersion < _cur_DocVersion ){ 
+                if ((_start.character > 0 && _start.line == 0) || _start.line > 0){   
 
                 // go back to the previous caret position.
-                let backpos = event.selections[0].start.translate(0, -1);
+                let backpos = _start.translate(0, -1);
                 // keep current caret position.
                 let currentpos = event.selections[0].end;
                 // create range from prev pos to current pos.
@@ -141,13 +142,14 @@ export function activate(context: ExtensionContext) {
                 logger.SafeLog("Thunder: '" + _curString + "' was typed." + (_isTracked ? "it is a tracked character!" : "it is not a tracked character..."));
 
                 if (_isTracked && _prevString != undefined && _prevT != undefined && _prevString === _curString) {
-                    // was the tracked character pressed in time?
+                    
                     _replaced = await TryExecuteReplacement(event.textEditor, _curString, _curT, curCharRange, _replacer);
 
                 }
 
                 _prevString = _replaced ? _replacer : _curString;
                 _prevT = _curT;
+             }
             }
 
             _prev_DocVersion = _cur_DocVersion;
@@ -159,6 +161,8 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(subOnDidChangedTextEditor);
     context.subscriptions.push(subOnDidChangeTextEditorSelection);
 
+
+   
 
 }
 

@@ -1,8 +1,8 @@
 import  {workspace} from 'vscode';
 
-export var Mappings : string = "thunder.mappings";
-export var MaxInterval: string = "thunder.maxInterval";
-export var DebugMode: string = "thunder.debugMode";
+export let Mappings : string = "thunder.mappings";
+export let MaxInterval: string = "thunder.maxInterval";
+export let DebugMode: string = "thunder.debugMode";
 
 
 export function Get(settingName : string){

@@ -1,7 +1,8 @@
 # Thunder
 
 
-Thunder is a small extension that improves the typing experience, allowing writers to type text more quickly and efficiently.
+Thunder is an extension for Visual Studio Code that improves your typing experience. With Thunder you will type faster and more naturally.
+![](res\thunder-example-001.gif)
 
 
 ## Description
@@ -14,6 +15,7 @@ Thunder works by replacing a **tracked** character with a string called **replac
 Thunder comes with a default Mapping List. For example to type the '"' (double quotes character) it is possible to avoid the SHIFT + 2 key combination and instead pressing twice the '2' character.
 Thunder has default mappings for the common punctuation characters used in computer programming.
 
+![](res\thunder-settings-001.png)
 
 ## Notes
 
@@ -27,6 +29,7 @@ To also allow tracked characters to be typed twice in a row without being replac
 - Mappings are dynamic! Mappings can be changed at any time. No need to reactivate the extension.
 
 - Language Specific Mappings! Activate different mappings for different languages.
+
 
 ## Extension Settings
 
@@ -71,3 +74,69 @@ Thunder replaces any tracked character with the corresponding replacer string.
 ## Release Notes
 
 see CHANGELOG.md
+
+
+## Supported Languages
+
+- plaintext
+- Log
+- log
+- bat
+- clojure
+- coffeescript
+- jsonc
+- c
+- cpp
+- csharp
+- css
+- dockerfile
+- ignore
+- fsharp
+- git-commit
+- git-rebase
+- diff
+- go
+- groovy
+- handlebars
+- hlsl
+- html
+- ini
+- properties
+- java
+- javascriptreact
+- javascript
+- jsx-tags
+- json
+- less
+- lua
+- makefile
+- markdown
+- objective-c
+- objective-cpp
+- perl
+- perl6
+- php
+- powershell
+- jade
+- python
+- r
+- razor
+- ruby
+- rust
+- scss
+- shaderlab
+- shellscript
+- sql
+- swift
+- typescript
+- typescriptreact
+- vb
+- xml
+- xsl
+- yaml
+- dart
+- pip-requirements
+- toml
+- jinja
+- jupyter
+- aspnetcorerazor

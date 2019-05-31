@@ -2,6 +2,8 @@
 
 
 Thunder is an extension for Visual Studio Code that improves your typing experience. With Thunder you will type faster and more naturally.
+
+
 ![](https://raw.githubusercontent.com/xenoken/Thunder/master/res/example.gif)
 
 

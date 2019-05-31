@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 // import * as vscode from 'vscode';
 
-import { TextEditor, window, ExtensionContext, Range, TextEditorSelectionChangeKind, languages } from 'vscode';
+import { TextEditor, window, ExtensionContext, Range, TextEditorSelectionChangeKind } from 'vscode';
 
 import * as settings from './settings';
 import * as logger from "./logger";
